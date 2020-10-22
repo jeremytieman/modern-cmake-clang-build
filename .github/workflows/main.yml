@@ -19,6 +19,6 @@ jobs:
           cmake -G "Ninja Multi-Config" ..
       - id: build
         name: Build project
-        run |
+        run: |
           cd build
           cmake --build . --config Release
