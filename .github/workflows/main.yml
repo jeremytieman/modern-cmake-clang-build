@@ -8,17 +8,22 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - id: install-ninja
+        name: Install Ninja
+        run: choco install ninja
       - id: pull
         name: Pull repository
         uses: actions/checkout@v2
       - id: configure
         name: Configure project
+        needs: [ install-ninja, pull ]
         run: |
           mkdir build
           cd build
           cmake -G "Ninja Multi-Config" ..
       - id: build
         name: Build project
+        needs: [ configure ]
         run: |
           cd build
           cmake --build . --config Release
