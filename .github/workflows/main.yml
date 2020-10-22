@@ -11,6 +11,9 @@ jobs:
       - id: install-ninja
         name: Install Ninja
         run: choco install ninja
+      - id: install-llvm
+        name: Install LLVM
+        run: choco install llvm
       - id: pull
         name: Pull repository
         uses: actions/checkout@v2
