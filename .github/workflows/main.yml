@@ -19,10 +19,13 @@ jobs:
         uses: actions/checkout@v2
       - id: configure
         name: Configure project
+        env:
+          CC: "C:\\Program Files\\LLVM\\bin\\clang.exe"
+          CXX: "C:\\Program Files\\LLVM\\bin\\clang++.exe"
         run: |
           mkdir build
           cd build
-          cmake -G "Ninja Multi-Config" -D CMAKE_C_COMPILER="C:\\Program Files\\LLVM\\bin\\clang" -D CMAKE_CXX_COMPILER="C:\\Program Files\\LLVM\\bin\\clang++" ..
+          cmake -G "Ninja Multi-Config" ..
       - id: build
         name: Build project
         run: |
